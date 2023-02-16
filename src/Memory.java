@@ -84,12 +84,10 @@ public class Memory {
         int physicalMemoryAddress = frameNumber | offset;
         listAddresses.add(new Address(physicalMemory[physicalMemoryAddress], physicalMemoryAddress, offset));
     }
-
     public void printOutPut() {
         for (int i = 0; i < listAddresses.size(); i++) {
-            System.out.println("Virtual address: " + listAddresses.get(i).getLogicalAddress() + "\nPhysical address: " + listAddresses.get(i).getPhysicalMemoryAddress()
-                    + " \nValue: " + listAddresses.get(i).getSignedValue());
-            System.out.println("-----------------------------------------------");
+            System.out.printf("Virtual address: %3d  Physical adress: %5d \tValue: %3d \n" , listAddresses.get(i).getLogicalAddress(),listAddresses.get(i).getPhysicalMemoryAddress(),listAddresses.get(i).getSignedValue());
+    
         }
         double pageFaultRate = (double) pageFaults / totalAddresses;
         double TLBHitRate = (double) TLBHits / totalAddresses;
@@ -98,5 +96,6 @@ public class Memory {
         System.out.println("TLB Hit Rate : " + TLBHitRate);
 
     }
+
 
 }
